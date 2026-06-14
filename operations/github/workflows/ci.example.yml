@@ -1,0 +1,53 @@
+# CIワークフロー例（B-4）
+#
+# 工程5 verification の担い手＝GitHub CI（自動テスト）。重い機械仕事をGitHub側に出す＝トークンを使わない。
+# これは「例」。技術はノードごとに決まる（flow-spec: 実行環境）ので、テスト手順は対象リポジトリに合わせて差し替える。
+#
+# 使い方:
+#   1) このファイルを対象リポジトリの .github/workflows/ci.yml にコピー
+#   2) 下の「test」ジョブの手順を、そのプロジェクトの言語/FWに差し替える
+#   3) マージキューを使うなら merge_group トリガは消さない（後述）
+
+name: CI
+
+on:
+  pull_request:          # PR作成・更新で回る（工程4-3 → 5-1）
+  # ↓ マージキューを使う場合は必須。これが無いと、PRをキューに入れた時にチェックが回らず
+  #    「必須チェックが報告されない」でマージが失敗する（GitHub仕様）。
+  merge_group:
+
+# 同じPRに新しいpushが来たら古い実行をキャンセル（stale即停止・トークン浪費の防止と整合）
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # === ここから下を対象リポジトリの技術に差し替える ===
+      # 例: Node.js
+      # - uses: actions/setup-node@v4
+      #   with: { node-version: 'lts/*' }
+      # - run: npm ci
+      # - run: npm test
+      #
+      # 例: Python
+      # - uses: actions/setup-python@v5
+      #   with: { python-version: '3.x' }
+      # - run: pip install -r requirements.txt
+      # - run: pytest
+      # === ここまで ===
+
+      - name: placeholder
+        run: echo "差し替えてください: 完了条件を担保するテストを走らせる"
+
+# --- マージを必須ゲート＋直列化（オプトイン）---
+# 既定では CI の緑/赤は人間が見る信号で、マージは止めない（無害）。
+# 「緑じゃないとマージ不可」「1個ずつ直列化」を望む時だけ、対象ブランチ（例 main）に
+# branch protection / ruleset で次を有効化する:
+#   - Require status checks to pass  → この CI ジョブ（test）を必須に
+#   - Require merge queue            → マージを1個ずつ直列化（合体後に上の merge_group で再CI）
+# これで工程5の verification が機械ゲートとして効く。
