@@ -126,7 +126,16 @@ mkdir -p .github/ISSUE_TEMPLATE
 cp <このキット>/github/ISSUE_TEMPLATE/node.md .github/ISSUE_TEMPLATE/node.md
 ```
 
-### 4.（任意）sub-issue の視覚ネストを使うなら拡張を入れる
+### 4. `/setup` コマンドを置く
+
+```bash
+mkdir -p .claude/commands
+cp <このキット>/claude/commands/setup.md .claude/commands/setup.md
+```
+
+次回以降のセッション開始時に `/setup` と打つだけで起動時チェック（PC 設定確認・プロジェクト初期化確認）が走るようになる。
+
+### 5.（任意）sub-issue の視覚ネストを使うなら拡張を入れる
 
 GitHub の sub-issue 連結は `gh` ネイティブ未対応のため、使うなら拡張を入れる。
 **入れなくてもフローは動く**（木の正本は各Issue本文の「親: #N」＋レベルラベル）。
