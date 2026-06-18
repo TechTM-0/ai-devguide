@@ -1,0 +1,13 @@
+{
+  "name": "ai-devguide",
+  "owner": {
+    "name": "TechTM-0"
+  },
+  "plugins": [
+    {
+      "name": "ai-devguide",
+      "source": ".",
+      "description": "AI開発フロー（工程1〜5）のプロジェクト初期化と実行指示"
+    }
+  ]
+}
