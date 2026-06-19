@@ -6,7 +6,10 @@
   "plugins": [
     {
       "name": "ai-devguide",
-      "source": ".",
+      "source": {
+        "source": "github",
+        "repo": "TechTM-0/ai-devguide"
+      },
       "description": "AI development flow (steps 1-5): project initialization and execution guide"
     }
   ]
