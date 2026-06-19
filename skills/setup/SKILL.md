@@ -17,7 +17,10 @@ description: Initialize a project with ai-devguide flow. Creates eng: labels, .g
      - Linux: https://github.com/cli/cli/blob/trunk/docs/install_linux.md 参照
    - インストール済みで PATH 未登録と判明した場合は、フルパスで `gh` を呼び出すか、人間に「ターミナルを再起動してから `/setup` を再実行してください」と案内する
 2. `gh auth status` を確認する。未認証なら `gh auth login` を実行し、表示されたワンタイムコードを人間に伝え「ブラウザでこのコードを承認してください」と求める
-3. `operations/claude/ai-devguide-flow.md` を `~/.claude/ai-devguide-flow.md` にコピーする
+3. 説明書をプラグインフォルダから `~/.claude/ai-devguide-flow.md` にコピーする。コピー元は次の優先順で探す：
+   1. まず `${CLAUDE_PLUGIN_ROOT}/operations/claude/ai-devguide-flow.md`（環境変数が展開されればこれを使う）
+   2. 見つからなければ、この SKILL.md が置かれているプラグインフォルダの絶対パスから親を辿り、その直下の `operations/claude/ai-devguide-flow.md` を使う
+   - どちらも見つからなければ「プラグインが壊れている可能性」を人間に伝えて停止する
 4. 人間に伝える：「`~/.claude/CLAUDE.md`（なければ新規作成）の末尾に以下の1行を追記してください。完了したらお知らせください。」
    ```
    @import ai-devguide-flow.md
