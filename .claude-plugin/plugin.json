@@ -1,6 +1,6 @@
 {
   "name": "ai-devguide",
-  "description": "AI開発フロー（工程1〜5）のプロジェクト初期化と実行指示",
+  "description": "AI development flow (steps 1-5): project initialization and execution guide",
   "version": "1.0.0",
   "author": {
     "name": "TechTM-0"
