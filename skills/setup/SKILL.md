@@ -2,6 +2,14 @@
 description: Initialize a project with ai-devguide flow. Creates eng: labels, .gitignore entry, and ISSUE_TEMPLATE.
 ---
 
+まず `gh --version` を実行し、GitHub CLI の有無を確認する。
+
+**gh が未インストールの場合**：`winget install --id GitHub.cli` を実行してインストールする。インストール後 `gh auth login` を実行し、ブラウザでの認証を案内する。認証完了後、次へ進む。
+
+**gh がインストール済みの場合**：`gh auth status` で認証確認する。未認証なら `gh auth login` を実行して認証する。
+
+---
+
 `gh label list` を実行し、`eng:project` ラベルが存在するか確認する。
 
 **存在する場合**：「このプロジェクトは初期化済みです。」と伝えて終了する。
