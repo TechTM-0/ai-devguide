@@ -6,13 +6,7 @@
 
 ## 手順
 
-### 1. リポジトリをクローン（初回のみ）
-
-```
-git clone https://github.com/TechTM-0/ai-devguide.git
-```
-
-### 2. マーケットプレイスを登録（初回のみ）
+### 1. マーケットプレイスを登録（初回のみ）
 
 Claude Code 上で実行：
 
@@ -20,7 +14,7 @@ Claude Code 上で実行：
 /plugin marketplace add TechTM-0/ai-devguide
 ```
 
-### 3. プラグインをインストール
+### 2. プラグインをインストール
 
 ```
 /plugin marketplace update
@@ -33,7 +27,7 @@ Claude Code 上で実行：
 3. `ai-devguide` を選択
 4. `Install for you (user scope)` を選択
 
-### 4. 反映
+### 3. 反映
 
 ```
 /reload-plugins
@@ -54,5 +48,5 @@ Claude Code 上で実行：
 ## 備考
 
 - user scope でインストールするため、PC上の全プロジェクトで使用可能
-- マーケットプレイス登録（手順2）は1回のみ実施すればよい
-- Claude Code のバージョンアップ後にスキルが消えた場合は手順3〜4を再実行
+- マーケットプレイス登録（手順1）は1回のみ実施すればよい
+- Claude Code のバージョンアップ後にスキルが消えた場合は手順2〜3を再実行
