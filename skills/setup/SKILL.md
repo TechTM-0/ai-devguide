@@ -2,6 +2,8 @@
 description: Initialize a project with ai-devguide flow. Creates eng: labels, .gitignore entry, and ISSUE_TEMPLATE.
 ---
 
+> このスキルの実行中、ユーザーへの応答はすべて日本語で行う（gh / git のコマンド出力は除く）。
+
 ## 起動時チェック 1：PC セットアップ済みか
 
 `~/.claude/ai-devguide-flow.md` が存在するか確認する。
