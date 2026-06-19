@@ -1,5 +1,5 @@
 ---
-description: ai-devguide フローのプロジェクト初期化。eng: ラベルの作成・.gitignore・ISSUE_TEMPLATE を設定する。
+description: Initialize a project with ai-devguide flow. Creates eng: labels, .gitignore entry, and ISSUE_TEMPLATE.
 ---
 
 `gh label list` を実行し、`eng:project` ラベルが存在するか確認する。
