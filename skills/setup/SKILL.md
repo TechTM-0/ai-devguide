@@ -17,7 +17,7 @@ description: Initialize a project with ai-devguide flow. Creates eng: labels, .g
      - Windows: `winget install --id GitHub.cli`（完了後ターミナルを再起動）
      - macOS: `brew install gh`
      - Linux: https://github.com/cli/cli/blob/trunk/docs/install_linux.md 参照
-   - インストール済みで PATH 未登録と判明した場合は、フルパスで `gh` を呼び出すか、人間に「ターミナルを再起動してから `/setup` を再実行してください」と案内する
+   - インストール済みで PATH 未登録と判明した場合は、フルパスで `gh` を呼び出すか、人間に「ターミナルを再起動してから `/ai-devguide:setup` を再実行してください」と案内する
 2. `gh auth status` を確認する。未認証なら `gh auth login` を実行し、表示されたワンタイムコードを人間に伝え「ブラウザでこのコードを承認してください」と求める
 3. 説明書をプラグインフォルダから `~/.claude/ai-devguide-flow.md` にコピーする。コピー元は次の優先順で探す：
    1. まず `${CLAUDE_PLUGIN_ROOT}/operations/claude/ai-devguide-flow.md`（環境変数が展開されればこれを使う）
@@ -27,7 +27,7 @@ description: Initialize a project with ai-devguide flow. Creates eng: labels, .g
    ```
    @import ai-devguide-flow.md
    ```
-5. 人間から完了の連絡を受けたら：「次回セッションからすべてのプロジェクトでこのフローが自動認識されます。次は自分の AI 開発プロジェクトのフォルダで Claude Code を起動し、`/setup` を実行してください。」と案内してここで終了する。
+5. 人間から完了の連絡を受けたら：「次回セッションからすべてのプロジェクトでこのフローが自動認識されます。次は自分の AI 開発プロジェクトのフォルダで Claude Code を起動し、`/ai-devguide:setup` を実行してください。」と案内してここで終了する。
 
 **存在する場合**：チェック2 へ。
 
