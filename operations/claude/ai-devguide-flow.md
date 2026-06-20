@@ -93,11 +93,15 @@
 3. ブランチを切る：`git checkout -b feature/<Issue番号>-<短いタイトル>`（親 feature ブランチがある場合はそこから切る）
 4. 実装する（選んだ手法では解けない → 工程2へ / 分解・責任が悪い → 工程3へ / 問題設定が誤り → 工程1へ）
 5. ローカルでコードを実行し、壊れていないか確認する（テスト・ビルド・起動）
-6. PRを作成する：
+6. `.github/workflows/ci.yml` が存在しない場合、`eng:project` ラベルの Issue のゴール・背景と既存ファイルからスタックを判断し（不明な場合は人間に確認）、適切な CI ワークフローを生成してコミットする：
+   ```bash
+   git add .github/workflows/ci.yml && git commit -m "ci: add CI workflow"
+   ```
+7. PRを作成する：
    ```bash
    gh pr create --title "<タイトル>" --body "closes #<Issue番号>" --label "eng:review"
    ```
-7. 工程5 へ
+8. 工程5 へ
 
 ---
 

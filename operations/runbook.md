@@ -195,10 +195,23 @@ git commit -m "<#N> <何をしたか>"
 詰まりは原因の層へ：手法では解けない→工程2／分割が悪い→工程3／問題設定が誤り→工程1／やり方レベル→ここで対処。
 **自明チェックリスト項目もここで実装する（チェックはまだ入れない＝確認は工程5）。**
 
-### 4-3 ローカル自己点検 → push → PR（レビュー依頼）
+### 4-3 ローカル自己点検 → CIワークフローを用意
 
 ```bash
 # ローカルでテスト/ビルド/起動して壊れていないか（軽い自己点検）
+
+# CIワークフローが未設置なら生成・コミット（無いと工程5-1で gh pr checks が緑にも赤にもならない）
+if [ ! -f .github/workflows/ci.yml ]; then
+  # eng:project のゴール・背景と既存ファイル（package.json / requirements.txt / go.mod 等）から
+  # スタックを判断し（不明なら人間に確認）、各プロジェクトの技術に合わせた ci.yml を生成
+  git add .github/workflows/ci.yml
+  git commit -m "ci: add CI workflow"
+fi
+```
+
+### 4-4 push → PR（レビュー依頼）
+
+```bash
 git push -u origin "task/<#N>-<slug>"
 gh pr create --base "feature/<親#>-<slug>" \
   --title "<#N> <ゴール>" \
